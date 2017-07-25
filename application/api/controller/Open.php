@@ -12,7 +12,7 @@ class Open extends Controller
      * 则更新原来 ssid 的数据
      *
      */
-    public function get_ssid() {
+    public function getSSid() {
         $ssid = hash('sha256', 'xcm_' . rand() . time() . rand());
         $time_out = time() + 7200;
 
@@ -33,7 +33,7 @@ class Open extends Controller
      * 根据 ssid 获取 user_id
      */
 
-    public function get_user_id() {
+    public function getUserId() {
         $header = Request::instance()->header();
         $ssid = isset($header['ssid']) ? $header['ssid'] : '';
         $value = map($ssid);

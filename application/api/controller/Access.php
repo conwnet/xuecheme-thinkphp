@@ -46,8 +46,8 @@ class Access extends Controller
     }
 
     public function check($code) {
-        if($this->code == $code && $this->code != -1) {
-            $this->code = -1;
+        if($this->sms_code == $code && $this->sms_code != -1) {
+            $this->sms_code = -1;
             return true;
         } else {
             return false;

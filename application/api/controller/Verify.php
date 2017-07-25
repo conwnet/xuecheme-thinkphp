@@ -18,7 +18,7 @@ class Verify extends Access
         ]);
     }
 
-    public function sms_code() {
+    public function smsCode() {
         $data = input('get.');
         $validate = new Validate(['mobile' => 'require|/1[34578]{1}\d{9}$/']);
         if(!$validate->check($data)) {
@@ -63,7 +63,7 @@ class Verify extends Access
         ]);
     }
 
-    public function sms_check() {
+    public function smsCheck() {
         $code = input('post.code');
         if($code == $this->get('sms_code')) {
             return json([
@@ -97,6 +97,7 @@ class Verify extends Access
                 'errmsg' => '此手机号已注册！'
             ]);
         }
+
         if($this->check($code)) {
             $user = new model\User;
             $user->username = $this->get('sms_mobile');
@@ -163,7 +164,8 @@ class Verify extends Access
             $this->set('user_id', $user->id);
             return json([
                 'errcode' => 0,
-                'errmsg' => '登录成功！'
+                'errmsg' => '登录成功！',
+                'user_id' => $user->id
             ]);
         } else {
             return json([
@@ -182,6 +184,14 @@ class Verify extends Access
         return json([
             'errcode' => 0,
             'errmsg' => '注销成功！'
+        ]);
+    }
+
+    public function get_user_id_by_ssid() {
+        return json([
+            'errcode' => 0,
+            'errmsg' => '获取成功！',
+            'user_id' => $this->get('user_id')
         ]);
     }
 

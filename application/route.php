@@ -12,16 +12,30 @@
 use think\Route;
 
 Route::get([
-    'api/ssid' => 'api/open/get_ssid',
-    'api/sms' => 'api/verify/sms_code',
+    'api/ssid' => 'api/open/getSSid',
+    'api/sms' => 'api/verify/smsCode',
     'api/logout' => 'api/verify/logout',
+    'api/user_id' => 'api/verify/getUserId',
+
+    'api/user' => 'api/user/getUserInfo',
+    'api/schools' => 'api/school/getSchoolList',
+    'api/school' => 'api/school/getSchoolInfo',
+
+    'api/packages' => 'api/package/getPackageList',
+
+    'api/coaches' => 'api/coach/getCoachList',
+    'api/coach' => 'api/coach/getCoachInfo',
+
+    'api/courses' => 'api/course/getCourseList'
 ]);
 
 
 Route::post([
     'api/regist' => 'api/verify/regist',
     'api/login' => 'api/verify/login',
-    'api/forget' => 'api/verify/forget'
+    'api/forget' => 'api/verify/forget',
+
+    'api/user' => 'api/user/setUserInfo'
 ]);
 
 return [
